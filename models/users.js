@@ -27,7 +27,7 @@ const userSchema = new Schema({
   updatedAt: {
     default: Date.now(),
     type: Number,
-  },
+  }
 });
 
 userSchema.index({ email: 1 });

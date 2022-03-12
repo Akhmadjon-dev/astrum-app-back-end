@@ -15,6 +15,7 @@ const database = "mongodb://localhost/server-students-db";
 const usersRouter = require("./routes/users");
 const courseRouter = require("./routes/course");
 const authRouter = require("./routes/auth");
+const attendanceRouter = require("./routes/attendance");
 
 const app = express();
 
@@ -47,6 +48,7 @@ app.use(isLoggedIn);
 app.use("/users", usersRouter);
 app.use("/courses", courseRouter);
 app.use("/auth", authRouter);
+app.use("/attendance", authRouter);
 
 mongoose
   .connect(database, { useNewUrlParser: true, useFindAndModify: false })
