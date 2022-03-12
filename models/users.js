@@ -3,7 +3,6 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
   address: String,
-  company: String,
   createdAt: {
     default: Date.now(),
     type: Number,
@@ -18,7 +17,6 @@ const userSchema = new Schema({
     default: "user",
     type: String,
   },
-  locationType: String,
   name: String,
   lastName: String,
   password: {

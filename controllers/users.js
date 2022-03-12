@@ -34,7 +34,6 @@ exports.createUser = async (req, res) => {
     ...req.body,
     password: hashedPassword,
   });
-  console.log(req.body, "ooooooooooooooooooooooooo");
   User.save()
     .then((data) => {
       res.json({ data, success: true });
