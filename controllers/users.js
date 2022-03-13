@@ -4,7 +4,7 @@ const util = require("../utils");
 
 exports.fetchAllUsers = (req, res) => {
   Users.find()
-    .then((users) => res.json(users))
+    .then((Users) => res.json(Users))
     .catch((err) => res.send(err));
 };
 

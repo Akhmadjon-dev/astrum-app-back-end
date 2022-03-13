@@ -1,10 +1,10 @@
 const bcrypt = require("bcrypt");
-const Course = require("../models/courses");
+const Course = require("../models/course");
 const util = require("../utils");
 
 exports.fetchAllCourse = (req, res) => {
   Course.find()
-    .then((course) => res.json(course))
+    .then((Course) => res.json(Course))
     .catch((err) => res.send(err));
 };
 
@@ -12,8 +12,8 @@ exports.fetchCourseById = (req, res) => {
   const { id } = req.params;
 
   Course.findById(id)
-    .then((course) => {
-      res.json(course);
+    .then((Course) => {
+      res.json(Course);
     })
     .catch((err) => res.send(err));
 };
@@ -56,8 +56,8 @@ exports.updateCourseById = async (req, res) => {
   const updatedData = { ...req.body, img };
 
   Course.findByIdAndUpdate(id, { $set: updatedData }, { new: true })
-    .then((course) => {
-      res.json(course);
+    .then((Course) => {
+      res.json(Course);
       util.resizeImg(req.file, "course");
     })
     .catch((err) => res.send(err));

@@ -4,7 +4,7 @@ const util = require("../utils");
 
 exports.fetchAllAttendance = (req, res) => {
   Attendance.find()
-    .then((attendance) => res.json(attendance))
+    .then((Attendance) => res.json(Attendance))
     .catch((err) => res.send(err));
 };
 
@@ -12,8 +12,8 @@ exports.fetchAttendanceById = (req, res) => {
   const { id } = req.params;
 
   Attendance.findById(id)
-    .then((attendance) => {
-      res.json(attendance);
+    .then((Attendance) => {
+      res.json(Attendance);
     })
     .catch((err) => res.send(err));
 };
@@ -44,8 +44,8 @@ exports.updateAttendanceById = async (req, res) => {
   const updatedData = { ...req.body};
 
   Attendance.findByIdAndUpdate(id, { $set: updatedData }, { new: true })
-    .then((attendance) => {
-      res.json(attendance);
+    .then((Attendance) => {
+      res.json(Attendance);
       util.resizeImg(req.file, "Attendance");
     })
     .catch((err) => res.send(err));
