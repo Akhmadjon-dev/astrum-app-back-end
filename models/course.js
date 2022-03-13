@@ -17,8 +17,6 @@ const coursesSchema = Schema(
         default: 1,
         type: Number,
       },
-      priceFrom: String,
-      priceTo: String,
       img: { type: Schema.Types.ObjectId, ref: "File" },
       description: String,
       student: [

@@ -28,7 +28,6 @@ exports.createAttendance = async (req, res) => {
   const newAttendance = new Attendance({
     ...req?.body,
   });
-  console.log(newAttendance, Attendance);
   newAttendance.save()
     .then((data) => {
       res.json({ newAttendance, success: true });
