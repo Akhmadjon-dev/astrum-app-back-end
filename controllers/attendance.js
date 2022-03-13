@@ -4,7 +4,7 @@ const util = require("../utils");
 
 exports.fetchAllAttendance = (req, res) => {
   Attendance.find()
-    .then((Attendance) => res.json(Attendance))
+    .then((attendance) => res.json(attendance))
     .catch((err) => res.send(err));
 };
 
@@ -12,8 +12,8 @@ exports.fetchAttendanceById = (req, res) => {
   const { id } = req.params;
 
   Attendance.findById(id)
-    .then((Attendance) => {
-      res.json(Attendance);
+    .then((attendance) => {
+      res.json(attendance);
     })
     .catch((err) => res.send(err));
 };
@@ -25,17 +25,13 @@ exports.deleteAllAttendance = (req, res) => {
 };
 
 exports.createAttendance = async (req, res) => {
-
-  // let imgFile = null;
-
-  // const img = file ? baseUrl + file.path.replace("public", "") : imgFile;
-  const Attendance = new Attendance({
-    ...req.body,
+  const newAttendance = new Attendance({
+    ...req?.body,
   });
-  Attendance.save()
+  console.log(newAttendance, Attendance);
+  newAttendance.save()
     .then((data) => {
-      res.json({ data, success: true });
-      // util.resizeImg(file, "Attendance");
+      res.json({ newAttendance, success: true });
     })
     .catch((err) => {
       res.json({ success: false, err });
@@ -49,8 +45,8 @@ exports.updateAttendanceById = async (req, res) => {
   const updatedData = { ...req.body};
 
   Attendance.findByIdAndUpdate(id, { $set: updatedData }, { new: true })
-    .then((Attendance) => {
-      res.json(Attendance);
+    .then((attendance) => {
+      res.json(attendance);
       util.resizeImg(req.file, "Attendance");
     })
     .catch((err) => res.send(err));

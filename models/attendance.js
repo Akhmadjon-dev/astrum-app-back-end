@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
-
 const { Schema } = mongoose;
-const mongoosePaginate = require("mongoose-paginate-v2");
-const mongooseHistory = require("mongoose-diff-history/diffHistory").plugin;
+
 
 const attendanceSchema = Schema(
   {
@@ -25,9 +23,6 @@ const attendanceSchema = Schema(
   },
   { timestamps: true }
 );
-
-attendanceSchema.plugin(mongoosePaginate);
-attendanceSchema.plugin(mongooseHistory);
 
 const Attendance = mongoose.model("Attendance", attendanceSchema);
 

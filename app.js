@@ -48,7 +48,7 @@ app.use(isLoggedIn);
 app.use("/users", usersRouter);
 app.use("/courses", courseRouter);
 app.use("/auth", authRouter);
-app.use("/attendance", authRouter);
+app.use("/attendance", attendanceRouter);
 
 mongoose
   .connect(database, { useNewUrlParser: true, useFindAndModify: false })
